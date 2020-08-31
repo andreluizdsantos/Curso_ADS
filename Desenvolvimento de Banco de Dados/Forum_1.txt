@@ -1,4 +1,4 @@
--- Criando Banco de dados.
+﻿-- Criando Banco de dados.
 
 CREATE DATABASE IF NOT EXISTS Sistema_OS
 	DEFAULT CHARACTER SET utf8mb4
@@ -100,11 +100,22 @@ SELECT count(Cliente_id) AS 'QuantOS', cliente.Nome
 
 SELECT SUM(Valor) AS 'ValorOSs', cliente.Nome
     FROM ordem, cliente
-    WHERE cliente.id = ordem.Cliente_id AND cliente.id = 3;
+    WHERE cliente.id = ordem.Cliente_id AND cliente.id = 2;
 
 -- Lista Nomes e numeros das Ordens de serviço dos clientes que tenham OS.
 
 SELECT C.Nome, O.nOS
     FROM ordem AS O
         INNER JOIN cliente AS C ON(C.id = O.Cliente_id);
+        
+-- Lista Nomes e numeros das Ordens de serviço dos clientes, incluindo os clientes que não tenham OS.
+        
+SELECT C.Nome, O.nOS
+    FROM ordem AS O
+        RIGHT JOIN cliente AS C ON(C.id = O.Cliente_id);
 
+SELECT NOW();
+SET @@global.time_zone = '-3:00';
+
+SELECT * FROM ordem
+where nOS is not null;

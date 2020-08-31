@@ -1,0 +1,110 @@
+-- Criando Banco de dados.
+
+CREATE DATABASE IF NOT EXISTS Sistema_OS
+	DEFAULT CHARACTER SET utf8mb4
+	DEFAULT COLLATE utf8mb4_general_ci;
+
+USE Sistema_OS;
+
+-- Criando Tabelas.
+
+DROP TABLE IF EXISTS Cliente;
+DROP TABLE IF EXISTS Ordem;
+
+CREATE TABLE IF NOT EXISTS Cliente(
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Nome VARCHAR(30) NOT NULL DEFAULT '',
+    CPF INT UNSIGNED NOT NULL UNIQUE,
+    Endereco VARCHAR(50) NOT NULL DEFAULT '',
+    Cep DECIMAL(8) NOT NULL,
+    Data_Cadastro DATE,
+    Telefone INT UNSIGNED NOT NULL,
+    Contrato ENUM('Não', 'Sim') NOT NULL DEFAULT 'Não'
+);
+
+CREATE TABLE IF NOT EXISTS Ordem(
+    nOS INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    Cliente_id INT NOT NULL,
+    Equipamento VARCHAR(30) NOT NULL DEFAULT '',
+    Defeito VARCHAR(50) NOT NULL DEFAULT '',
+    Laudo TEXT,
+    Serviço VARCHAR(50) NOT NULL DEFAULT '',
+	Valor DECIMAL(8,2)
+);
+
+-- Verificando descrição das tabelas.
+
+DESCRIBE Cliente;
+DESCRIBE Ordem;
+
+-- Criando referencial entre as tabelas.
+
+ALTER TABLE Ordem
+	ADD CONSTRAINT FK_cliente
+	FOREIGN KEY (Cliente_id) REFERENCES Cliente(id);
+
+-- Ajustando CPF para comportar os 11 digitos.
+
+ALTER TABLE Cliente
+	MODIFY CPF BIGINT UNSIGNED NOT NULL;
+
+-- Inserindo dados nas tabelas.
+
+INSERT INTO Cliente (Nome,CPF,Endereco,Cep,Data_Cadastro,Telefone,Contrato)
+    VALUES ('André Santos','12345678910','Algum Lugar, 47','89123145','2020-07-17','999999999','Não'),
+	    ('João Silva','10987654321','Cafundó, 76','89543321','2020-07-20','999999998','Sim'),
+        ('Luiz Souza','10101550554','Carajas,60','89258403','2020-07-25','999999997','Sim'),
+        ('Barbara Dias','10101608535','Carajas,150','89258403','2020-08-22','999999996','Não'),
+        ('Joana Moreira','10109088084','Itu,30','89259025','2020-08-24','999999995','Não');
+
+INSERT INTO Ordem (Cliente_id,Equipamento,Defeito,Laudo,Serviço,Valor)
+    VALUES ('1','Computador','Não Liga','Fonte com defeito','Troca da Fonte','100'),
+        ('1','Roteador','Não acessa rede','Configuração incorreta','Reconfiguração','30.00'),
+        ('3','Computador','Formatação c/ BKP','Efetuado serviço solicitado','Formatação com Backup','100'),
+        ('1','Computador','Formatação s/ BKP','Efetuado serviço solicitado','Formatação sem Backup','60'),
+        ('2','Computador','Formatação','Durante processo apresentou defeito no HD','Troca do HD e Formatação','530'),
+        ('4','Notebook','Formatação c/ BKP Linux','Efetuado serviço solicitado','Formatação com Backup','100'),
+        ('3','Notebook','Formatação s/ BKP','Efetuado serviço solicitado','Formatação Sem Backup','70');
+
+-- Listando dados inseridos.
+
+SELECT * FROM cliente;
+
+SELECT * FROM Ordem;
+
+-- Consulta id do cliente por parte do nome, exemplo começando com letra J.
+
+SELECT id, nome FROM cliente
+    WHERE nome LIKE 'J%'
+    ORDER BY Nome;
+
+-- Consulta Número da Ordem de Serviço do cliente pelo id do cliente, Ex. Id 2.
+
+SELECT cliente.Nome, cliente.id, ordem.nOS
+  FROM cliente, ordem
+  WHERE cliente.id = ordem.Cliente_id AND cliente.id = 2;
+
+-- Consulta Ordem de serviço do cliente pelo número da OS, Ex. nOS 5.
+
+SELECT cliente.Nome, ordem.nOS, ordem.Equipamento, ordem.Laudo, ordem.Serviço, ordem.Valor
+  FROM cliente, ordem
+  WHERE cliente.id = ordem.Cliente_id AND ordem.nOS = 5;
+
+-- Consulta a quantide de ordens de um cliente pela sua id, Ex. Id 2.
+
+SELECT count(Cliente_id) AS 'QuantOS', cliente.Nome
+    FROM ordem, cliente
+    WHERE cliente.id = ordem.Cliente_id AND cliente.id = 2;
+
+-- Somando o valor das ordens de um cliente, Ex. Id 3.
+
+SELECT SUM(Valor) AS 'ValorOSs', cliente.Nome
+    FROM ordem, cliente
+    WHERE cliente.id = ordem.Cliente_id AND cliente.id = 3;
+
+-- Lista Nomes e numeros das Ordens de serviço dos clientes que tenham OS.
+
+SELECT C.Nome, O.nOS
+    FROM ordem AS O
+        INNER JOIN cliente AS C ON(C.id = O.Cliente_id);
+

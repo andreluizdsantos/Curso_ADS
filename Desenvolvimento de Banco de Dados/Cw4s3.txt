@@ -1,0 +1,122 @@
+create database if not exists Escola
+	DEFAULT CHARACTER SET utf8mb4
+	DEFAULT COLLATE utf8mb4_general_ci;
+
+use Escola;
+
+create table Aluno(
+	RA int(3) primary key auto_increment,
+	Nome varchar(50),
+	Telefone bigint(11)
+ )auto_increment=1234;
+    
+create table Disciplina(
+	Id int(3) primary key auto_increment,
+    Nome varchar(50)
+);
+
+create table Notas(
+	IdNota int(3) primary key auto_increment,
+	AlunoRA int(3),
+    DisciplinaId int(3),
+    NotaP1 decimal(3,1),
+    NotaP2 decimal(3,1),
+    foreign key(AlunoRA) references Aluno(RA),
+    foreign key(DisciplinaId) references Disciplina(Id)
+);
+
+insert into Aluno (Nome, Telefone) values
+	('Aluno_A', '988776655'),
+	('Aluno_B', '988556655'),
+    ('Aluno_C', '988996655'),
+    ('Aluno_D', '988779955'),
+    ('Aluno_E', '988778855'),
+    ('Aluno_F', '988776688');
+
+insert into Disciplina (Nome) values
+	('Banco de Dados'),
+    ('Programação estruturada'),
+    ('Redes de computadores'),
+    ('LFA');
+
+insert into Notas (AlunoRA, DisciplinaId, NotaP1, NotaP2) values 
+	('1234','1','7','5.5'),
+    ('1235','1','7','5.5'),
+    ('1236','1','6','8.5'),
+    ('1237','1','5','3.5'),
+    ('1238','1','2.5','3.5'),
+    ('1239','1','9','5.5'),
+    ('1234','2','6','7.5'),
+    ('1235','2','6.5','8.5'),
+    ('1236','2','5','4.5'),
+    ('1237','2','8','7'),
+    ('1238','2','7.5','6.5'),
+    ('1239','2','6','5.5'),
+    ('1234','3','8.5','5.5'),
+    ('1235','3','3.5','7.5'),
+    ('1236','3','7','3.5'),
+    ('1237','3','2','7'),
+    ('1238','3','2.5','7.5'),
+    ('1239','3','4','9.5'),
+	('1234','4','5','6.5'),
+    ('1235','4','7.5','7.5'),
+    ('1236','4','7','6.5'),
+    ('1237','4','6','7'),
+    ('1238','4','4.5','3.5'),
+    ('1239','4','2','2.5');
+
+select * from Notas;
+truncate Notas;
+
+-- Sintaxe para criar uma função:
+CREATE FUNCTION nome_da_funcao (x tipo, y tipo)
+	RETURNS tipo
+	RETURN (função);
+    
+-- Sintaxe para utilizar uma função:
+SELECT nome_da_funcao (parâmetro x, parâmetro y)
+	FROM nome_da_tabela
+	WHERE nome_da_coluna (condição);
+
+-- Criando função para calcular a média
+CREATE FUNCTION fn_media(x DECIMAL(3,1), y DECIMAL(3,1))
+	RETURNS DECIMAL(3,1)
+    DETERMINISTIC -- para explicitar que a função não modifica os dados e é segura
+	RETURN (x * 0.4) + (y * 0.6);
+    
+SELECT Aluno.Nome, disciplina.Nome AS "Disiciplina",
+	fn_media(NotaP1, NotaP2)AS "Média Final"
+	FROM Notas INNER JOIN Aluno
+	ON Notas.AlunoRA = Aluno.RA
+	INNER JOIN Disciplina
+	ON Notas.DisciplinaId = Disciplina.Id
+	WHERE fn_media(NotaP1, NotaP2) >= 4.0
+	AND fn_media(NotaP1, NotaP2) <= 6.9;
+
+-- Para excluir uma função
+DROP FUNCTION nome_da_funcao;
+
+-- Sintaxe para criar um procedimento:
+CREATE PROCEDURE nome_do_procedure (var_nome tipo) Declarações.
+
+-- Sintaxe para utilizar um procedimento:
+CALL nome_do_procedure (var_nome);
+
+create procedure proc_MediaExame (var_DisciplinaId int)
+	select avg(fn_media(NotaP1, NotaP2)) AS "Média Exame"
+    from Notas
+    where DisciplinaId = var_DisciplinaId
+		AND (fn_media(NotaP1, NotaP2) >= 4.0
+        AND fn_media(NotaP1, NotaP2) <= 6.9);
+
+-- Para utilizar um procedimento armazenado e calcular a média geral dos alunos em exame em Banco de Dados - 1:
+call proc_MediaExame(1);
+-- Para utilizar um procedimento armazenado e calcular a média geral dos alunos em exame em Programação estruturada - 2:
+call proc_MediaExame(2);
+-- Para utilizar um procedimento armazenado e calcular a média geral dos alunos em exame em Redes de Computadores - 3:
+CALL proc_MediaExame(3);
+-- Para utilizar um procedimento armazenado e calcular a média geral dos alunos em exame em LFA - 4:
+CALL proc_MediaExame(4);
+
+-- Para excluir um procedimento armazenado
+DROP PROCEDURE nome_do_procedure;

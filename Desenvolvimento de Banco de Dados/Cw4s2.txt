@@ -84,3 +84,22 @@ select M.Id AS Registro, M.Data, M.Hora, P.Nome AS Paciente, R.Nome AS Remedio, 
     inner join Remedio AS R  ON (RemedioCod = R.Cod)
     inner join Paciente AS P ON (PacienteNum = P.Num)
     order by M.Id;
+
+update Medicacao
+	set EnfermeiraCoren = 22222
+    where Id = 1;
+
+-- desativa o registro de alterações automatico do banco de dados
+SET AUTOCOMMIT=0;
+
+-- efetua o registro da alteração no banco de dados manualmente
+commit; 
+
+-- reverter transação feita no banco de dados
+rollback;
+
+-- ponto de restauração manual
+SAVEPOINT ponto_salvo;
+
+-- restaurar ponto
+ROLLBACK TO SAVEPOINT ponto_salvo;

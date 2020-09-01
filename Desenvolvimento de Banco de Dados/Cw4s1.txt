@@ -1,0 +1,88 @@
+create database Car;
+
+use Car;
+
+create table Fabricante (
+	codigo int(3) primary key auto_increment,
+    Marca char (20) not null
+);
+
+create table Veiculo (
+	RENAVAN int(8) primary key,
+    Nome varchar(30) not null,
+    Cor varchar(20) not null,
+    Preco decimal (10,2) not null,
+    fabricante_Codigo int(3) not null,
+    foreign key (fabricante_Codigo) references Fabricante(codigo)
+);
+
+insert into Fabricante (Marca) values ('Volk'), ('Fait'), ('Chervroles'), ('Fordys'), ('Maudi'), ('Junday');
+
+select * from Fabricante;
+select * from Veiculo;
+truncate Veiculo;
+
+insert into Veiculo (RENAVAN, Nome, Cor, Preco, fabricante_Codigo) values
+('1239567','Corsas','azul','150000','3'),
+('1434567','Já','verde','490000','4'),
+('1258567','Montanha','amarelo','620000','3'),
+('1279567','Hideias','branco','440000','2'),
+('1934567','AAR5','grafite','1800000','5'),
+('1284567','Cheveiro','vermelho','350000','1'),
+('1534567','EspecialFex','preto','250000','1'),
+('1274567','10S','azul','880000','3'),
+('1294567','Corsas','verde','195000','3'),
+('1634567','AAR3','preto','1500000','5'),
+('1244567','Jutus','azul','480000','1'),
+('1334567','Seniel','vermelho','950000','2'),
+('1543567','Estradus','amarelo','720000','2'),
+('1564567','Fins','azul','650000','3'),
+('1784567','Hideas','preto','760000','2'),
+('1974567','Fastinnn','cinza','630000','4'),
+('1544567','AAR3','prata','1450000','5'),
+('1854567','Jà','branco','480000','4'),
+('1924567','Golos','azul','320000','1'),
+('1724567','Linearrr','verde','190000','2');
+
+-- Criando uma View
+
+CREATE VIEW v_select1 AS 
+	SELECT veiculo.Nome AS "Veiculo", 
+    fabricante.marca AS "Marca",
+    Veiculo.cor AS "Cor", 
+    Veiculo.preco AS "Valor"
+FROM Veiculo INNER JOIN fabricante
+WHERE veiculo.fabricante_Codigo = fabricante.Codigo AND
+ Veiculo.preco <= '500000';
+ 
+ -- A view é uma tabela virtual e pode se vista como uma tabela
+ show tables;
+ 
+ -- para utilizar uma view para exibir uma consulta
+ select * from v_select1;
+ 
+ -- para excluir a view
+ drop view v_select1;
+ 
+ -- criando um index, ele é opcional mas pode melhorar a performance da pesquisa 
+ CREATE INDEX idx_Renavam ON
+	veiculo(RENAVAN);
+-- consultar o index criado    
+SHOW INDEX FROM veiculo;
+
+-- usando o index
+SELECT nome AS "Veiculo", cor AS
+	"Cor", Preco AS "Valor" FROM veiculo
+	USE INDEX(idx_Renavam)
+	WHERE preco<= 500000;
+    
+-- excluindo um index
+drop index idx_Renavam;
+
+-- Fulltext buscar texto dentro de strings
+ALTER TABLE Veiculo ADD FULLTEXT (Nome);
+
+-- para usar o fulltext
+select Nome, cor, preco from Veiculo
+	where match (Nome)
+    against('Corsas');

@@ -1,0 +1,86 @@
+create database PA;
+
+use PA;
+
+create table Enfermeira(
+	Coren int primary key,
+    Nome varchar(50) not null
+);
+
+create table Paciente(
+	Num int primary key,
+    Nome varchar(50) not null
+);
+
+create table Remedio(
+	Cod int primary key,
+    Nome varchar(50) not null
+);
+
+create table Medicacao(
+	Id int primary key auto_increment,
+    Data date not null,
+    Hora time not null,
+    PacienteNum int not null,
+    RemedioCod int not null,
+    EnfermeiraCoren int not null,
+    foreign key(PacienteNum) references Paciente(Num),
+    foreign key(RemedioCod) references Remedio(Cod),
+    foreign key(EnfermeiraCoren) references Enfermeira(Coren)
+);
+
+insert Enfermeira values (11111, "Enfermeira 1"),
+(22222, "Enfermeira 2"),
+(33333, "Enfermeira 3");
+
+insert Paciente values (1000, "Paciente A"),
+(1001, "Paciente B"),
+(1002, "Paciente C"),
+(1003, "Paciente D"),
+(1004, "Paciente E"),
+(1005, "Paciente F"),
+(1006, "Paciente G"),
+(1007, "Paciente H"),
+(1008, "Paciente I"),
+(1009, "Paciente J");
+
+insert Remedio values (100, "Controle de pressao"),
+	(101, "Problemas no estomago"),
+    (102, "Soro"), 
+    (103, "Calmante"), 
+    (104, "Analgesico"), 
+    (105, "Rins"), 
+    (106, "Coracao"); 
+    
+insert Medicacao values
+	(0, current_date(), "05:00:00", 1003, 104, 11111),
+    (0, current_date(), "08:00:00", 1001, 100, 11111),
+    (0, current_date(), "08:20:00", 1007, 102, 11111),
+    (0, current_date(), "08:40:00", 1007, 105, 11111),
+    (0, current_date(), "09:00:00", 1004, 104, 22222),
+    (0, current_date(), "09:20:00", 1005, 105, 22222),
+    (0, current_date(), "09:50:00", 1001, 103, 11111),
+    (0, current_date(), "10:00:00", 1008, 102, 33333),
+    (0, current_date(), "10:20:00", 1002, 100, 11111),
+    (0, current_date(), "10:30:00", 1001, 106, 22222),
+    (0, current_date(), "10:40:00", 1003, 103, 22222),
+    (0, current_date(), "11:00:00", 1001, 100, 11111),
+    (0, current_date(), "12:30:00", 1008, 102, 22222),
+    (0, current_date(), "13:00:00", 1002, 103, 11111),
+    (0, current_date(), "14:40:00", 1006, 104, 22222),
+    (0, current_date(), "15:00:00", 1003, 105, 11111),
+    (0, current_date(), "15:30:00", 1004, 106, 11111),
+    (0, current_date(), current_time(), 1003, 104, 33333);
+    
+select * from Enfermeira;
+select * from Remedio;
+select * from Paciente;
+select * from Medicacao;
+truncate Medicacao;
+
+select M.Id AS Registro, M.Data, M.Hora, P.Nome AS Paciente, R.Nome AS Remedio, E.Nome AS Enfermeira
+	from medicacao AS M
+	inner join Enfermeira AS E ON (EnfermeiraCoren = E.Coren)
+    inner join Remedio AS R  ON (RemedioCod = R.Cod)
+    inner join Paciente AS P ON (PacienteNum = P.Num)
+    order by M.Id;

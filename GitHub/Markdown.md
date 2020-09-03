@@ -1,15 +1,15 @@
-   #Linguagem Markdown
+# Linguagem Markdown
 ***
 
 **Negrito** ou __Negrito__
 *Itálico*
 __*misto*__
 
-#Titulo nv1
+# Titulo nv1
 
-##Titulo nv2
+## Titulo nv2
  
-###Titulo nv3
+### Titulo nv3
 
 *** ou --- linha a baixo do texto
 

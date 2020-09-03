@@ -1,9 +1,7 @@
 # Linguagem Markdown
 ***
 
-**Negrito** ou __Negrito__
-*Itálico*
-__*misto*__
+**Negrito** ou __negrito__, *itálico*, __*misto*__, ~~tachado~~
 
 # Titulo nv1
 

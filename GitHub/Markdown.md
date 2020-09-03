@@ -1,11 +1,13 @@
 #Linguagem Markdown
 
 **Negrito** ou __Negrito__
-*Itálico*
+*ItÃ¡lico*
 __*misto*__
 
 #Titulo nv1
+
 ##Titulo nv2
+ 
 ###Titulo nv3
 
 *** ou --- linha a baixo do texto
@@ -19,11 +21,12 @@ __*misto*__
 - [ ] Lista de tarefas
 - [x] tarfefa feita
 
-![descrição imagem](url da imagem)
-[descrição link](url do link)
+![descriÃ§Ã£o imagem](url da imagem)
+
+[descriÃ§Ã£o link](url do link)
 
 Criar uma table
 
 Num | Nome | Nota
 ---|---|---
-1 | André | 10,0
+1 | AndrÃ© | 10,0

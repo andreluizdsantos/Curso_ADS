@@ -4,6 +4,6 @@
 
 * [Curso em Vídeo](https://www.cursoemvideo.com/)
 
-* [Repositório do professor](https://github.com/gustavoguanabara/)
+* [GitHub do professor](https://github.com/gustavoguanabara/)
 
 * [Manual Markdown](https://github.com/gustavoguanabara/git-github/blob/master/manuais-PDF/guia-markdown.pdf)

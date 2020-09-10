@@ -28,7 +28,7 @@ print('=' * 18)
 r = float(input('Digite um valor em Reais: '))
 d = float(input('Digite o valor do Dólar na cotação atual: '))
 e = float(input('Digite o valor do Euro na cotação atual: '))
-print('Valor de R${} é equivalente a US${} e a €{}'.format(r, r / d, r / e))
+print('Valor de R${} é equivalente a US${:.2F} e a €{:.2f}'.format(r, r / d, r / e))
 
 # 11 Faça um programa que leia a largura e a altura de uma parede em metros, calcule a sua àrea e a quantidade de tinta necessária para pintá-la, sabendo que cada litro de tinta, cobre uma àrea de 2m²
 l = float(input('Digite o valor da largura da parede em metro(s): '))

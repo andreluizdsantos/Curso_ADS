@@ -18,17 +18,18 @@ print('{}m corresponde a, {}cm e {}mm, e também a, {}dam, {}hm e {}Km'.format(m
 # 9 Faça um programa que leia um numero inteiro qualquer e mostre na tela a sua tabuada
 n1 = int(input('Digite um número inteiro qualquer: '))
 n = 1
-print('A tabuada de {} é:\n'.format(n1), '=' * 18)
+print('  A tabuada de {} é:\n'.format(n1), '=' * 18)
 while n <= 10:
-    print('|{:>3} x {:>3} = {:>3} |'.format(n1, n, n * n1))
+    print(' |{:>3} x {:>3} = {:>3} |'.format(n1, n, n * n1))
     n = n + 1
-print('=' * 18)
+print('','=' * 18)
 
-# 10 Crie um programa que leia quanto dinheiro uma pessoa tem na carteira e mostre quantos Dólares ela pode comprar. Considere US$ 1,00 = R$ 3,27 ;( *2017 , R$ 5,36 em 2020.
+# 10 Crie um programa que leia quanto dinheiro uma pessoa tem na carteira e mostre quantos Dólares ela pode comprar.
+# Considere US$ 1,00 = R$ 3,27 ;( *2017 , R$ 5,36 em 2020.
 r = float(input('Digite um valor em Reais: '))
 d = float(input('Digite o valor do Dólar na cotação atual: '))
 e = float(input('Digite o valor do Euro na cotação atual: '))
-print('Valor de R${} é equivalente a US${:.2F} e a €{:.2f}'.format(r, r / d, r / e))
+print('Valor de R${:.2f} é equivalente a US${:.2F} e a €{:.2f}'.format(r, r / d, r / e))
 
 # 11 Faça um programa que leia a largura e a altura de uma parede em metros, calcule a sua àrea e a quantidade de tinta necessária para pintá-la, sabendo que cada litro de tinta, cobre uma àrea de 2m²
 l = float(input('Digite o valor da largura da parede em metro(s): '))

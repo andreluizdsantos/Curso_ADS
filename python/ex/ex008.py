@@ -28,16 +28,28 @@ print('Do ângulo {}°, o valor do seno é: {:.2f}, o valor do cosseno é: {:.2f
 
 # 19 Um professor que sortear um dos seus alunos para apagar o quadro. Faça um programa que ajude ele,
 # lendo o nome deles e escreva o nome do escolhido.
-from random import randint
-alunos = []
-while True:
-    print('Cadastre os alunos a serem sorteados')
-    if
-    add = input('Digite o nome do aluno: ')
-
-
+'''from random import choice
+a1 = str(input('Digite o nome do aluno: '))
+a2 = str(input('Digite o nome do aluno: '))
+a3 = str(input('Digite o nome do aluno: '))
+a4 = str(input('Digite o nome do aluno: '))
+alunos = [a1, a2, a3, a4]
+print('O aluno sorteado é: {}'.format(choice(alunos)))'''
 
 # 20 O mesmo professor do desafio anterior quer sortear a ordem de apresentação de trabalhos dos alunos.
 # Faça um programa que leia o nome dos quatro alunos e mostre a ordem sorteada.
+'''from random import shuffle
+a1 = str(input('Primeiro aluno: '))
+a2 = str(input('Segundo aluno: '))
+a3 = str(input('Terceiro aluno: '))
+a4 = str(input('Quarto aluno: '))
+alunos = [a1, a2, a3, a4]
+shuffle(alunos)
+print('A ordem de alunos será: {}'.format(alunos))'''
 
 # 21 Faça um programa em Python que abra e reproduza o áudio de um arquivo MP3.
+from pygame import mixer
+mixer.init()
+mixer.music.load('astronomia.mp3')
+mixer.music.play()
+input('Agora você escuta?')

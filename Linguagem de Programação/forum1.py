@@ -1,4 +1,4 @@
-# v: 1.02
+# v: 1.03
 colec = []
 p = ['Inventário da Coleção', ' 1 - Adicionar item: ', ' 2 - Remover item: ', ' 3 - Exibir Coleção: ', ' 4 - Sair do inventário: ', ' Opção: ', ' Inventário está vazio.', ' Opção invalida!']
 i = 0

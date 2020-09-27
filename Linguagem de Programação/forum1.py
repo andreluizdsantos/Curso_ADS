@@ -1,24 +1,23 @@
-# v: 1.01
+# v: 1.02
 colec = []
-nome = 'Inventário da Coleção'
-adic = ' 1 - Adicionar item: '
-remo = ' 2 - Remover item: '
-exib = ' 3 - Exibir Coleção: '
-sair = ' 4 - Sair do inventário: '
-
+p = ['Inventário da Coleção', ' 1 - Adicionar item: ', ' 2 - Remover item: ', ' 3 - Exibir Coleção: ', ' 4 - Sair do inventário: ']
+i = 0
 while True:
-    print('', 30*'=', '\n |{:^28}|\n'.format(nome), 30*'=', '\n |{:<28}|\n |{:<28}|\n |{:<28}|\n |{:<28}|\n'.format(adic, remo, exib, sair), 30*'=')
+    print('', 30*'=', '\n |{:^28}|\n'.format(p[0]), 30*'=', '\n |{:<28}|\n |{:<28}|\n |{:<28}|\n |{:<28}|\n'.format(p[1], p[2], p[3], p[4]), 30*'=')
     op = int(input(' Opção: '))
     if op == 1:
-        add = input(adic)
+        add = input(p[1])
         colec.append(add)
         print(' Item {} adicionado.'.format(add))
     elif op == 2:
-        rem = input(remo)
+        rem = input(p[2])
         colec.remove(rem)
         print(' Item {} removido.'.format(rem))
     elif op == 3:
-        print(' Lista de itens da coleção:\n {}'.format(colec))
+        print(f'{p[3]}')
+        for i in range(len(colec)):
+            print(f' Item {i + 1}: {colec[i]}')
+            i = i + 1
         if colec == []:
             print(' Inventário está vazio.')
     elif op == 4:

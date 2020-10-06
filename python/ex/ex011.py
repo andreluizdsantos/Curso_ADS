@@ -127,3 +127,15 @@ elif 30 <= imc < 40:
 else:
     print(' você está com Obesidade Mórbida')
 """
+def ope(x, y):
+    ad = x + y
+    su = x - y
+    mu = x * y
+    di = x / y
+    return ad, su, mu, di
+
+print('Inicio do programa')
+a = int(input('Digite um numero: '))
+b = int(input('Digite outro numero: '))
+s = ope(a, b)
+print(f'Soma: {s[0]}, Subritração: {s[1]}, Multiplicação: {s[2]}, Divisão: {s[3]}')

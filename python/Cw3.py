@@ -28,7 +28,7 @@ print(func1.status)
 print(func2.status)
 """
 
-"""import sqlite3
+import sqlite3
 
 
 class CrudSQLite:
@@ -45,7 +45,7 @@ class CrudSQLite:
 
         conn = self._conectar()
         cursor = conn.cursor()
-        query = f"""CREATE TABLE {tabela} {colunas}"""
+        query = f"CREATE TABLE {tabela} {colunas}"
         cursor.execute(query)
         conn.commit()
         cursor.close()
@@ -59,7 +59,7 @@ class CrudSQLite:
 
         conn = self._conectar()
         cursor = conn.cursor()
-        query = f"""INSERT INTO {tabela} {colunas} VALUES {valores}"""
+        query = f"INSERT INTO {tabela} {colunas} VALUES {valores}"
         cursor.execute(query)
         conn.commit()
         cursor.close()
@@ -70,7 +70,7 @@ class CrudSQLite:
     def ler_registros(self, tabela):
         conn = self._conectar()
         cursor = conn.cursor()
-        query = f"""SELECT * FROM {tabela}"""
+        query = f"SELECT * FROM {tabela}"
         cursor.execute(query)
         resultado = cursor.fetchall()
         cursor.close()
@@ -85,7 +85,7 @@ class CrudSQLite:
 
         conn = self._conectar()
         cursor = conn.cursor()
-        query = f"""UPDATE {tabela} SET {campo_alterar} = '{valor_alterar}' WHERE {campo_condicao} = {valor_condicao}"""
+        query = f"UPDATE {tabela} SET {campo_alterar} = '{valor_alterar}' WHERE {campo_condicao} = {valor_condicao}"
         cursor.execute(query)
         conn.commit()
         cursor.close()
@@ -98,12 +98,12 @@ class CrudSQLite:
         valor_condicao = condicao.get(campo_condicao)
         conn = self._conectar()
         cursor = conn.cursor()
-        query = f"""DELETE FROM {tabela} WHERE {campo_condicao} = {valor_condicao}"""
+        query = f"DELETE FROM {tabela} WHERE {campo_condicao} = {valor_condicao}"
         cursor.execute(query)
         conn.commit()
         cursor.close()
         conn.close()
         print("Dado excluído com sucesso!")
         return None
-"""
+
 

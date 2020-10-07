@@ -28,7 +28,7 @@ print(func1.status)
 print(func2.status)
 """
 
-import sqlite3
+"""import sqlite3
 
 
 class CrudSQLite:
@@ -38,6 +38,20 @@ class CrudSQLite:
     def _conectar(self):
         conn = sqlite3.connect(self.nome_banco)
         return conn
+
+    def criar_tabela(self, tabela, colunas):
+        colunas = tuple(registro.keys())
+        valores = tuple(registro.values())
+
+        conn = self._conectar()
+        cursor = conn.cursor()
+        query = f"""CREATE TABLE {tabela} {colunas}"""
+        cursor.execute(query)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("Tabela criada com sucesso!")
+        return None
 
     def inserir_registro(self, tabela, registro):
         colunas = tuple(registro.keys())
@@ -91,18 +105,5 @@ class CrudSQLite:
         conn.close()
         print("Dado excluído com sucesso!")
         return None
+"""
 
-while True:
-    print('Criando e manipulando banco de dados')
-    print(' 1 - Criar Banco de dados:\n 2 - Inserir dados:\n 3 - Ler dados:\n 4 - Remover dados:\n 5 - Sair: ')
-    op = int(input('Digite uma Opção: '))
-    if op == 1:
-        nome = input('Digite o nome do Banco de dados: ')
-        CrudSQLite(nome)
-    elif op == 2:
-        tabela = input('Digite o nome da tabela: ')
-        regitro = input('Digite o valor a ser registrado')
-        nome._conectar(nome)
-        nome.inserir_registro()
-    elif op == 5:
-        break

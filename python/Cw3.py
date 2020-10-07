@@ -1,3 +1,33 @@
+"""class PrimeiraClasse:
+    nome = None
+
+    def imprimir_mensagem(self):
+        print("Olá seja bem vindo!")
+
+
+objeto1 = PrimeiraClasse()
+objeto1.nome = "Aluno 1"
+
+print(objeto1.nome)
+objeto1.imprimir_mensagem()
+"""
+
+
+"""class FuncionarioTecnico:
+    def __init__(self, status):
+        self.nivel = 'Técnico'
+        self.status = status
+
+
+func1 = FuncionarioTecnico('Ativo')
+func2 = FuncionarioTecnico('Licença Mestrado')
+
+print(func1.nivel)
+print(func2.nivel)
+print(func1.status)
+print(func2.status)
+"""
+
 import sqlite3
 
 
@@ -61,3 +91,18 @@ class CrudSQLite:
         conn.close()
         print("Dado excluído com sucesso!")
         return None
+
+while True:
+    print('Criando e manipulando banco de dados')
+    print(' 1 - Criar Banco de dados:\n 2 - Inserir dados:\n 3 - Ler dados:\n 4 - Remover dados:\n 5 - Sair: ')
+    op = int(input('Digite uma Opção: '))
+    if op == 1:
+        nome = input('Digite o nome do Banco de dados: ')
+        CrudSQLite(nome)
+    elif op == 2:
+        tabela = input('Digite o nome da tabela: ')
+        regitro = input('Digite o valor a ser registrado')
+        nome._conectar(nome)
+        nome.inserir_registro()
+    elif op == 5:
+        break

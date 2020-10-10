@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 from matplotlib.collections import EventCollection
 import numpy as np
 
+
 # Corrigindo estado aleatório para reprodutibilidade
 np.random.seed(18202020)
 

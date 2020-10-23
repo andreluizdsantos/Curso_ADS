@@ -7,6 +7,17 @@ Com a planilha *Cronograma.xlsx*, você pode organizar seus estudos, fique livre
 
  - [x] Desenvolvimento de Banco de Dados
   * MySQL
- - [ ] Linguagem de Programação
+ - [x] Linguagem de Programação
   * Python
+ - [x] Ed - Mindset Ágil
+  * Kamban
+  * Lean Canvas
+  * Scrum
+  * Planejamento e Implementação: Atividades, Rotinas e Práticas
+  * Planejamento e Implementação: Escopo, Papéis e Priorização
+ - [ ] Analise Orientada a Objetos
+  * UML
+ - [ ] Desenvolvimento Orientado ao Objeto
+  * JS
+  
 ***

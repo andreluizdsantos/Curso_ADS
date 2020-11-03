@@ -1,3 +1,6 @@
+from typing import List, Any, Tuple, Union
+
+
 def buscar_Animais(lista, numero):
     minimo = 0
     maximo = len(lista) - 1
@@ -31,10 +34,13 @@ while True:
         rebanho.append(add)
         print(f' Animal {add} cadastrado.')
     elif op == 2:
-        rem = int(input(p[2]))
-        rem -= 1
-        print(f' Animal {rebanho[rem]} removido.')
-        del rebanho[rem]
+        r = int(input(p[2]))
+        for i in range(len(rebanho)):
+            x = (rebanho[i][0])
+            if x == r:
+                rem = rebanho[i]
+        print(f' Animal {rem} removido.')
+        rebanho.remove(rem)
     elif op == 3:
         num = int(input(' Digite o numero do animal: '))
         enc = buscar_Animais(rebanho, num) #Executa a busca binária
@@ -52,4 +58,3 @@ while True:
         break
     else:
         print(' Opção invalida!')
-

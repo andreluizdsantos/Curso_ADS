@@ -1,5 +1,6 @@
-rebanho = [['01', 'a'], ['02', 'b'], ['03', 'c'], ['04', 'd'], ['05', 'e']]
-lista = []
-for i in range(len(rebanho)):
-    lista.append(i)
-    print(lista)
+r = [(1, 'a')]
+i = len(r) -1
+print(r[i][0])
+print(r[0][0])
+print(r[:][0])
+

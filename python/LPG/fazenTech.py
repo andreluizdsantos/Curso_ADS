@@ -1,6 +1,3 @@
-from typing import List, Any, Tuple, Union
-
-
 def buscar_Animais(lista, numero):
     minimo = 0
     maximo = len(lista) - 1

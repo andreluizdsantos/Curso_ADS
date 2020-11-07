@@ -1,4 +1,4 @@
-import sqlite3 #Importa a bibliotéca sqlite3
+import sqlite3 #Importa a biblioteca sqlite3
 
 
 def buscar_Animais(lista, numero): #Cria a função de busca binária
@@ -18,10 +18,10 @@ def buscar_Animais(lista, numero): #Cria a função de busca binária
     return encontrado
 
 
-desc = ["Código", "Espécie", "Raça", "Data Nasc.",
-        "Data Vacin.", "Ordenha", "Temp. Leite",
-        "Prod. Quarto", "Prod Diária", "Ruminação", "Inseminação",
-        "Estim. Parto", "Secagem"] #Adicionando valors iniciais as listas
+desc = ["Código......", "Espécie.....", "Raça........", "Data Nasc...",
+        "Data Vacin..", "Ordenha.....", "Temp. Leite.",
+        "Prod. Quarto", "Prod. Diária", "Ruminação...", "Inseminação.",
+        "Estim. Parto", "Secagem....."] #Adicionando valores iniciais as listas
 lista = ['', '', '', '']
 lista0 = ['', '', '', '', '', '']
 
@@ -38,78 +38,79 @@ while True:
     5 - Consulta Tabela:
     6 - Excluir/Criar Tabela:
     7 - Sair""")
-    op = int(input('Digite uma opção: '))
+    op = int(input(' Digite uma Opção: '))
     if op == 1:
         lista[0] = str(input('Espécie: '))
         lista[1] = str(input('Raça: '))
         lista[2] = str(input('Data Nascimento: '))
         lista[3] = str(input('Data Vacinação: '))
         print(lista)
-        sql = "insert into prodLeite(esp, rac, nas, vac) values (?, ?, ?, ?)"
+        sql = "INSERT INTO prodLeite(esp, rac, nas, vac, ord, tmp," \
+              " pdq, pdd, rum, ins, ept, sec)" \
+              " VALUES (?, ?, ?, ?, '', '', '', '', '', '', '', '')"
         #Objeto sql recebe comando para inserir os dados, e ? aponta para a posição do conteudo da lista
         cursor.execute(sql, lista)
-        #O cursor executa o conteudo do objeto sql, e usa a lista para preecher os valores
-        print("...dados inseridos com sucesso!")
+        #O cursor executa o conteudo do objeto sql, e usa a lista para preencher os valores
+        print(" ...Dados Inseridos com Sucesso!")
         conector.commit()
         #Conector executado commit gravando os dados no banco
     elif op == 2:
-        sql = "select * from prodLeite"
+        sql = "SELECT * FROM prodLeite"
         cursor.execute(sql)
-        print('Cadastrar Produção:')
-        lista0[5] = int(input(' Digite o numero do animal: '))
+        print(' Cadastrar Produção:')
+        lista0[5] = int(input(' Digite o Número do Animal: '))
         lista0[0] = str(input(' Horário Ordenha: '))
         lista0[1] = float(input(' Temperatura Leite: '))
         lista0[2] = float(input(' Produção Quarto: '))
         lista0[3] = lista0[2] * 4 #Calcula a produção dia
-        lista0[4] = str(input('Tempo de Ruminação: '))
+        lista0[4] = str(input(' Tempo de Ruminação: '))
         print(lista0)
         sql = "UPDATE prodLeite SET ord = ?, tmp = ?, pdq = ?, pdd = ?, rum = ? WHERE (id = ?);"
-        # Objeto sql recebe comando para atualizar os dados, e ? aponta para a posição do conteudo da lista
+        # Objeto sql recebe comando para atualizar os dados, e ? aponta para a posição do conteúdo da lista
         cursor.execute(sql, lista0)
-        print("...dados inseridos com sucesso!")
+        print(" ...Dados Inseridos com Sucesso!")
         conector.commit()
     elif op == 3:
-        print('Cadastrar Reprodução:')
-        lista[3] = int(input(' Digite o numero do animal: '))
-        lista[0] = str(input('Inseminação: '))
-        lista[1] = str(input('Estimativa Parto: '))
-        lista[2] = str(input('Data Secagem: '))
+        print(' Cadastrar Reprodução:')
+        lista[3] = int(input(' Digite o Número do Animal: '))
+        lista[0] = str(input(' Inseminação: '))
+        lista[1] = str(input(' Estimativa Parto: '))
+        lista[2] = str(input(' Data Secagem: '))
         print(lista)
         sql = "UPDATE prodLeite SET ins = ?, ept = ?, sec = ? WHERE (id = ?);"
         cursor.execute(sql, lista)
-        print("...dados inseridos com sucesso!")
+        print(" ...Dados Inseridos com Sucesso!")
         conector.commit()
     elif op == 4:
-        sql = "select * from prodLeite"
+        sql = "SELECT * FROM prodLeite"
         cursor.execute(sql)
         dados = cursor.fetchall()
-        print("Dados da tabela 'prodLeite'")
-        print(f"{len(dados)} registros Encontrados")
-        num = int(input(' Digite o numero do animal: '))
+        print(" Dados da Tabela 'prodLeite'")
+        print(f'\033[1;30;42m{len(dados):5} Registros Encontrados', ' ' * 3, '\033[m')
+        num = int(input(' Digite o número do Animal: '))
         enc = buscar_Animais(dados, num) #Executa a busca binária
         if enc == True:
-            print(f'Animal Encontrado:')
+            print('\033[1;30;42m', ' '*5, 'Animal Encontrado:', ' '*5, '\033[m')
             for i in range(len(dados[num - 1])):
                 print(f"\033[1;30;46m{desc[i]:>15}: {dados[num - 1][i]:<15}\033[m")
         else:
-            print(' Não Encontrado:')
+            print('\033[1;30;41m', ' '*3, 'Animal Não Encontrado:', ' '*3, '\033[m')
     elif op == 5:
-        sql = "select * from prodLeite"
+        sql = "SELECT * FROM prodLeite"
         cursor.execute(sql)
         dados = cursor.fetchall()
-        print("Dados da tabela 'prodLeite'")
-        print(f"{len(dados)} registros Encontrados")
-        print("-" * 33)
-        print("- " * 17)
+        print(" Dados da tabela 'prodLeite'")
+        print(f'\033[1;30;42m{len(dados):5} Registros Encontrados', ' ' * 3, '\033[m')
+        print("-" * 32)
         for d in dados: #Percorre todos os endereços da lista
             for i in range(len(d)):
                 print(f"\033[1;30;46m{desc[i]:>15}: {d[i]:<15}\033[m")
-            print("-" * 33)
+            print("-" * 32)
     elif op == 6:
-        sql = "drop table if exists prodLeite"
+        sql = "DROP TABLE IF EXISTS prodLeite"
         #objeto sql recebe comando para excluir a tabela caso exista
         cursor.execute(sql)
-        sql = "create table if not exists prodLeite(" \
+        sql = "CREAT TABLE IF NOT EXISTS prodLeite(" \
               "id integer primary key autoincrement," \
               " esp varchar(20)," \
               " rac varchar(20)," \
@@ -125,13 +126,12 @@ while True:
               " sec DATE)"
         #objeto sql recebe comando para cria tabela
         cursor.execute(sql)
-        print('Tabela cadastro excluida e recriada')
-    elif op == 9:
+        print(' Tabela prodLeite Excluída e Recriada')
+    elif op == 7:
         break
     else:
-        print('Opção inválida!')
+        print(' Opção Inválida!')
 
 cursor.close() #fecha o cursor
 conector.close() #desconecta o banco
-print("\nFim do programa")
-
+print('\n\033[1;30;41m', ' ' * 6, 'Fim do Programa!', ' ' * 6, '\033[m')

@@ -1,3 +1,4 @@
+"""
 def busca_sequencial(lista, elemento):
     pos = 0
     encontrado = False
@@ -29,21 +30,29 @@ def busca_sequencial_ordenada(lista, elemento):
 testelista = [1, 2, 8, 10, 13, 15, 18, 20]
 print(busca_sequencial_ordenada(testelista, 5))
 print(busca_sequencial_ordenada(testelista, 15))
+"""
+animais = [(1, 'Vaca', 'Holadesa'), (2, 'Vaca', 'Nelore'), (3, 'Vaca', 'Jersey')]
 
-def busca_binaria(lista, elemento):
-    minimo = 0
-    maximo = len(lista) - 1
-    encontrado = False
+def busca_bin(lista, elem):
+    min = 0
+    max = len(lista) - 1
+    encont = False
 
-    while minimo <= maximo and not encontrado:
-        meio_lista = (minimo + maximo) // 2
-        if lista[meio_lista] == elemento:
-            encontrado = True
+    while min <= max and not encont:
+        meio = (min + max) // 2
+        if lista[meio][0] == elem:
+            encont = True
         else:
-            if elemento < lista[meio_lista]:
-                maximo = meio_lista - 1
+            if elem < lista[meio][0]:
+                max = meio - 1
             else:
-                minimo = meio_lista + 1
-    return encontrado
-testelista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-print(busca_binaria(testelista, 14))
+                min = meio + 1
+    return encont
+
+n = int(input('Entre com o numero do animal: '))
+e = busca_bin(animais, n)
+
+if e == True:
+    print('Encontrado: ', animais[n - 1])
+else:
+    print(' Não Encontrado:')

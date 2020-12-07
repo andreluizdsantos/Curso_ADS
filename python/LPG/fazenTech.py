@@ -1,3 +1,5 @@
+from pip._vendor.distlib.compat import raw_input
+
 def buscar_Animais(lista, numero):
     minimo = 0
     maximo = len(lista) - 1

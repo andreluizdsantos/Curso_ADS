@@ -17,7 +17,7 @@ Com a planilha *Cronograma.xlsx*, você pode organizar seus estudos, fique livre
   * Planejamento e Implementação: Escopo, Papéis e Priorização
  - [x] Analise Orientada a Objetos
   * UML
- - [ ] Desenvolvimento Orientado ao Objeto
+ - [x] Desenvolvimento Orientado ao Objeto
   * Programação Orientada a Objetos
   * Java
   * Alice

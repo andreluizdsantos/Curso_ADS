@@ -2,11 +2,11 @@
 from random import randint
 from time import sleep
 escolha = ['Pedra', 'Papel', 'Tesoura']
-computador = randint(0,2)
+computador = randint(0, 2)
 jogador = int(input("""Jogue:
-1-Pedra
-2-Papel
-3-Tesoura
+[ 1 ] - Pedra
+[ 2 ] - Papel
+[ 3 ] - Tesoura
 """)) - 1
 print("JO")
 sleep(1)

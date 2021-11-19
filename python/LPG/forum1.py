@@ -17,6 +17,7 @@ while True:
         print(f'{p[3]}')
         for i in range(len(colec)):
             print(f' Item {i + 1}: {colec[i]}')
+            i = i + 1
         if colec == []:
             print(p[6])
     elif op == 4:

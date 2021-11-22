@@ -1,27 +1,25 @@
 # Curso_ADS
- **Repositório** de arquivos e exercícios do curso *ADS*
- ***
+ **Repositório** de arquivos e exercícios do curso *ADS* e exercícios dos cursos do canal *Curso em Vídeo*.
 
-Com a planilha *Cronograma.xlsx*, você pode organizar seus estudos, fique livre para baixar e personalizar como melhor lhe atender.
 ***
 
  - [x] Desenvolvimento de Banco de Dados
+
   * MySQL
- - [x] Linguagem de Programação
+
+ - [x] Linguagens de Programação
+
   * Python
- - [x] Ed - Mindset Ágil
-  * Kamban
-  * Lean Canvas
-  * Scrum
-  * Planejamento e Implementação: Atividades, Rotinas e Práticas
-  * Planejamento e Implementação: Escopo, Papéis e Priorização
- - [x] Analise Orientada a Objetos
-  * UML
- - [x] Desenvolvimento Orientado ao Objeto
-  * Programação Orientada a Objetos
   * Java
-  * Alice
-  * GreenFoot
-  
+  * C++
+
+ - [x] Linguagens de Marcação
+
+  * Mardown
+  * HTML + CSS
+
+ - [x] Analise Orientada a Objetos
+
+  * UML
   
 ***

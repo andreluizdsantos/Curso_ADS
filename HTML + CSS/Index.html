@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Com Media Query</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="estilo.css" />
+        <!--Folha de estilo criada anteriormente carregada -->
+    </head>
+    <body>
+        <main class="container">
+            <h1>Sistema de detecção de Fake News</h1>
+            <form method="post" action="">
+                <div class="c">
+                    <label>Título:</label>
+                    <input type="text" name="title" size=50 placeholder="Digite o título da notícia" maxlength="25">
+                </div>
+                <div class="c">
+                    <label>Conteúdo</label>
+                    <textarea name="content" class="txtbox" placeholder="Digite ou cole a notícia a ser consultada." ></textarea>
+                </div>
+                <button>Enviar</button>
+
+                <h4>TESTE MEDIA QUERIE – RESOLUÇÕES DIFERENTES. </h4>
+                <p>Mude o tamanho do seu navegador para ver as mudanças.</p>
+        
+                <div class="caixa um">Esta linha ficará verde se
+                a área de visão for inferior a 600px</div>
+          
+                <div class="caixa dois">Esta linha ficará azul se
+                a área de visão estiver entre 600px e 900px</div>
+            
+                <div class="caixa tres">Esta linha ficará vermelha se
+                a área de visão for maior que 900px</div>
+        
+                <p class="area-visivel"><strong>Sua área de visão
+                atual é: </strong> <span class="lt600">menor que
+                600px</span> <span class="bt600-900">entre 600 -
+                900px</span> <span class="gt900">maior que 900px</span></p>
+
+            </form>
+        </main>
+    </body>
+
+</html>

@@ -1,0 +1,82 @@
+<style type="text/css">
+
+body {
+	padding: 15px;
+	background:#EEE;
+	font-family: Arial;
+}
+
+.caixa {
+	border: solid 1px #000;
+	padding: 5px 10px;
+	max-width: 440px;
+}
+
+.area-visivel span {
+	color: #000;
+	display: none;
+	border: solid 1px #000;
+	padding: 5px 10px;
+}
+
+input {
+	width: calc(100% -20px);
+}
+
+.container{
+	width: 600px;
+	margin: 0 auto;
+}
+
+.txtbox {
+	display:block;
+	border: solid 1px #000;
+	padding: 5px 10px;
+}
+
+
+/* max-width  */
+@media screen and (max-width: 600px) {
+	.um {
+		background: #0F0;
+	}
+	span.lt600 {
+		display: inline-block;
+	}
+	.txtbox {
+		min-width: calc(50%);
+		min-height: 200px;
+		/* min-width: 420px; */
+	}
+}
+
+/* min-width & max-width */
+@media screen and (min-width: 600px) and (max-width: 900px) {
+	.dois {
+		background: #059;
+	}
+	span.bt600-900 {
+		display: inline-block;
+	}
+	.txtbox {
+		min-height: 300px;
+		min-width: 500px;
+	}
+}
+
+/* min-width */
+@media screen and (min-width: 900px) {
+	.tres {
+		background: #F00;
+	}
+	span.gt900 {
+		display: inline-block;
+	}
+	.txtbox {
+		min-height: 400px;
+		min-width: 600px;
+	}
+}
+
+
+</style>

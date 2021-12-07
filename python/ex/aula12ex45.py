@@ -16,24 +16,24 @@ print("PO")
 sleep(1)
 if computador == 0:
     if jogador == 0:
-        print("Empate! {} x {}".format(escolha[computador], escolha[jogador]))
+        print(f"Empate! {escolha[computador]} x {escolha[jogador]}")
     elif jogador == 1:
-        print("Jogador ganhou! {} cobre {}".format(escolha[computador], escolha[jogador]))
+        print(f"Jogador ganhou! {escolha[computador]} é coberta pelo {escolha[jogador]}")
     elif jogador == 2:
-        print("Computador ganhou! {} quebra {}".format(escolha[computador], escolha[jogador]))
+        print(f"Computador ganhou! {escolha[computador]} quebra {escolha[jogador]}")
 elif computador == 1:
     if jogador == 0:
-        print("Computador ganhou! {} cobre {}".format(escolha[computador], escolha[jogador]))
+        print(f"Computador ganhou! {escolha[computador]} cobre {escolha[jogador]}")
     elif jogador == 1:
-        print("Empate! {} x {}".format(escolha[computador], escolha[jogador]))
+        print(f"Empate! {escolha[computador]} x {escolha[jogador]}")
     elif jogador == 2:
-        print("Jogador ganhou! {} é cortado pela {}".format(escolha[computador], escolha[jogador]))
+        print(f"Jogador ganhou! {escolha[computador]} é cortado pela {escolha[jogador]}")
 elif computador == 2:
         if jogador == 0:
-            print("Jogador ganhou! {} é quebrada pela {}".format(escolha[computador], escolha[jogador]))
+            print(f"Jogador ganhou! {escolha[computador]} é quebrada pela {escolha[jogador]}")
         elif jogador == 1:
-            print("Computador ganhou! {} corta {}".format(escolha[computador], escolha[jogador]))
+            print(f"Computador ganhou! {escolha[computador]} corta {escolha[jogador]}")
         elif jogador == 2:
-            print("Empate! {} x {}".format(escolha[computador], escolha[jogador]))
+            print(f"Empate! {escolha[computador]} x {escolha[jogador]}")
 else:
     print("Opção inválida:")

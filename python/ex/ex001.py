@@ -1,4 +1,4 @@
+print('====== DESAFIO 01 ======')
 nome = input('Qual é o seu nome? ')
-idade = input('Qual é sua idade? ')
-peso = input('Qual seu peso? ')
-print(nome, idade, peso)
+print('Olá {}! Prazer em te conhecer!'.format(nome))
+print(30*'=', '\n{:-^30}\n'.format(nome), 30*'=')

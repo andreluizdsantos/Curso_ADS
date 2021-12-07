@@ -1,7 +1,4 @@
-print('======DESAFIO 04======')
-print('Calculo delta')
-a = float(input('Digite o valor de a: '))
-b = float(input('Digite o valor de b: '))
-c = float(input('Digite o valor de c: '))
-d = (b**2 - 4*a*c)
-print('O valor de delata é: {}'.format(d))
+# ========== Desafio 5 ==========
+# 5 Faça um programa que leia um numero inteiro e mostre seu sucessor e seu antecessor
+n = int(input('Digite um número: '))
+print('O número digitado é {}, seu antecessor é {}, e seu sucessor é {}.'.format(n , n - 1, n + 1))

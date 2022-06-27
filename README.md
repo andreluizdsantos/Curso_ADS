@@ -4,7 +4,7 @@
 ***
  - [x] Projeto de Software
  - [x] Sistemas Operacionais
- - [ ] Segurança e Auditoria de Sistemas
+ - [x] Segurança e Auditoria de Sistemas
  - [x] Ed - Marketing Digital Para Microempreendedores
 
  - [x] Engenharia de Software
